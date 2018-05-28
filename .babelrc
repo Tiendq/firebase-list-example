@@ -2,13 +2,18 @@
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["> 0.25%", "not ie 11", "not op_mini all"]
+        "browsers": ["> 0.25%", "not ie 11", "not op_mini all"],
+        "node": "current"
       }
     }],
     "react"
   ],
   "plugins": [
     "transform-object-rest-spread",
-    "transform-class-properties"
+    "transform-class-properties",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
   ]
 }

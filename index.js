@@ -1,21 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import * as reducers from './client/reducers';
+import { TaskList } from './client/constants';
 import App from './client/app';
 
-/*import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import reducers from './scripts/reducers';
+let initialState = {
+  task: TaskList.LIST,
+  items: []
+}
 
-const loggerMiddleware = createLogger();
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let store = createStore(combineReducers(reducers), initialState);
 
-// Configure redux-devtools: https://github.com/zalmoxisus/redux-devtools-extension
-const store = createStore(combineReducers(reducers),
-  composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware)));
-
-ReactDOM.render(<Provider store={store}><TwitterApp /></Provider>, document.getElementById('root'));
-*/
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
