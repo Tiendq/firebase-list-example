@@ -2,7 +2,8 @@ module.exports = {
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended", // eslint
@@ -21,6 +22,7 @@ module.exports = {
   ],
   "rules": {
     "no-console": 0,
+    "no-unused-vars": 1,
     "jsx-a11y/click-events-have-key-events": 0
   }
 };
