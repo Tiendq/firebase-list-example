@@ -1,0 +1,14 @@
+{
+  "name": "firebase-list-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tien Do <tiendq@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --mode=development --inline --hot --host 0.0.0.0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "webpack --mode=development --progress --colors --watch"
+  },
+}
