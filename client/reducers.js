@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import { ADD_FROM_NASA, ADD_MEDIA, CLEAN_LIST, DELETE_MEDIA, EDIT_MEDIA, LIST_MEDIA, SEARCH_MEDIA, UPDATE_MEDIA } from './actions';
+import { ADD_FROM_NASA, ADD_MEDIA, DELETE_MEDIA, EDIT_MEDIA, LIST_MEDIA, SEARCH_MEDIA, UPDATE_MEDIA } from './actions';
 import { TaskList } from './constants';
 
 export const editingIndex = (state = -1, action) => {

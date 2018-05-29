@@ -1,2 +1,10 @@
 .edit-media-form {
+  .form-actions {
+    margin: 1rem 0;
+    text-align: right;
+
+    button {
+      margin-right: 1rem;
+    }
+  }
 }

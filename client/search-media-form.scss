@@ -1,2 +1,25 @@
 .search-media-form {
+  .search-form {
+    margin: 1rem 0;
+
+    button {
+      margin-right: 1rem;
+    }
+  }
+
+  .table {
+    .description-column {
+      width: 40%;
+    }
+
+    .date-column,
+    .download-column {
+      width: 10%;
+    }
+
+    .title-column,
+    .preview-column {
+      width: 20%;
+    }
+  }
 }

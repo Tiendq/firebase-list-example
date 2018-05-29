@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uploadFile } from './firebase-storage';
+import MediaPreview from './media-preview';
 import './edit-media-form.scss';
 
 class EditMediaForm extends React.Component {
@@ -26,7 +27,7 @@ class EditMediaForm extends React.Component {
     return (
       <div className="row edit-media-form">
         <form onSubmit={this.handleClickSubmit} className={formClass} noValidate>
-          <div className="form-group">
+          <div className="form-group form-actions">
             <button type="submit" className="btn btn-success">Save</button>
             <button type="button" className="btn btn-success" onClick={this.props.onCancel}>Cancel</button>
             {this.props.item && <button type="button" className="btn btn-danger" onClick={this.handleClickDelete}>Delete</button>}
@@ -57,7 +58,9 @@ class EditMediaForm extends React.Component {
           </div>}
           {this.props.item && <div className="form-group row">
             <label className="col-4 col-md-2 col-form-label">Preview</label>
-            <div className="col-8 col-md-10">{this.props.item.url}</div>
+            <div className="col-8 col-md-10">
+              <MediaPreview mediaType={this.props.item.mediaType} url={this.props.item.url} />
+            </div>
           </div>}
         </form>
       </div>

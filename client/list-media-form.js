@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MediaPreview from './media-preview';
 import './list-media-form.scss';
 
 class ListMediaForm extends React.Component {
@@ -19,11 +20,11 @@ class ListMediaForm extends React.Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Created Date</th>
-                  <th>Preview</th>
-                  <th>Download</th>
+                  <th className="title-column">Title</th>
+                  <th className="description-column">Description</th>
+                  <th className="date-column">Created Date</th>
+                  <th className="preview-column">Preview</th>
+                  <th className="download-column">Download</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,8 +44,8 @@ class ListMediaForm extends React.Component {
         </td>
         <td>{item.description}</td>
         <td>{new Date(item.createdDate).toDateString()}</td>
-        <td>Preview</td>
-        <td><button type="button" className="btn btn-success">Download</button></td>
+        <td><MediaPreview mediaType={item.mediaType} url={item.url} /></td>
+        <td><a href={item.url} className="btn btn-success">Download</a></td>
       </tr>
     );
   }

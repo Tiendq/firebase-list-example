@@ -1,9 +1,26 @@
 .list-media-form {
   .form-actions {
     margin: 1rem 0;
+    text-align: right;
   }
 
   .btn-add-item {
     margin-right: 16px;
+  }
+
+  .table {
+    .description-column {
+      width: 40%;
+    }
+
+    .date-column,
+    .download-column {
+      width: 10%;
+    }
+
+    .title-column,
+    .preview-column {
+      width: 20%;
+    }
   }
 }
