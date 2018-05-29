@@ -1,3 +1,8 @@
+### Demo
+
+![Demo app][sample.png]
+
+
 ### 1. Write an application in React JS:
 
 *Must use Redux or any state management libraries*
