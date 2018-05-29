@@ -1,6 +1,6 @@
 ### Demo
 
-![Demo app][sample.png]
+![Demo app](./demo.png)
 
 
 ### 1. Write an application in React JS:
