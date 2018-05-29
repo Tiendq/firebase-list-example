@@ -5,7 +5,7 @@ import SearchMediaForm from './search-media-form';
 let mapDispatchToProps = (dispatch) => ({
   onCancel: () => dispatch(listMedia()),
   onAddItem: (item) => {
-    console.log(item);
+    // console.log(item);
     dispatch(addNasaMedia(item));
   }
 });

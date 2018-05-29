@@ -5,6 +5,9 @@ module.exports = {
     "jest": true,
     "node": true
   },
+  "globals": {
+    "firebase": true
+  },
   "extends": [
     "eslint:recommended", // eslint
     "plugin:import/errors", // eslint-plugin-import

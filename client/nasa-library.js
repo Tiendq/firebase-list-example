@@ -20,7 +20,7 @@ async function searchMediaByKeyword(keyword) {
       mediaItems.push({
         title: item.title,
         description: item.description,
-        createdDate: new Date(item.date_created),
+        createdDate: item.date_created,
         mediaType: item.media_type,
         url: mediaFiles[0]
       });

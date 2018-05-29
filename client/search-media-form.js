@@ -18,7 +18,7 @@ class SearchMediaForm extends React.Component {
     return (
       <React.Fragment>
         <div className="row search-media-form">
-          <form onSubmit={this.handleClickSubmit} className="col-12">
+          <form onSubmit={this.handleClickSubmit} className="col-12" noValidate>
             <input type="text" className="form-control" value={this.state.keyword} onChange={this.handleKeywordChange} maxLength="50" />
             <button type="submit" className="btn btn-success">Search</button>
             <button type="button" className="btn btn-success" onClick={this.props.onCancel}>Cancel</button>
@@ -63,7 +63,7 @@ class SearchMediaForm extends React.Component {
       <tr key={item.title.substr(0, 30)}>
         <td>{item.title}</td>
         <td>{item.description}</td>
-        <td>{item.createdDate.toDateString()}</td>
+        <td>{new Date(item.createdDate).toDateString()}</td>
         <td>Preview</td>
         <td>
           <button type="button" className="btn btn-success" data-index={index} onClick={this.handleClickAddItem}>Add</button>
