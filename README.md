@@ -1,8 +1,20 @@
-### Working Demo
+# Working Demo
 
 [Demo video on Youtube](https://www.youtube.com/watch?v=705iZpzMyKY)
 
 [![Demo screen](./demo.png)](https://www.youtube.com/watch?v=705iZpzMyKY)
+
+# Configuration
+
+You need to update `config` variable in `index.html` with your [Firebase](https://firebase.google.com/) account configuration. This demo uses Firebase database and storage services.
+
+# Installation
+
+`yarn install`
+
+`yarn build`
+
+`yarn firebase` to start local server at `http://localhost:8080`
 
 ### 1. Write an application in React JS:
 
@@ -44,4 +56,3 @@ Title example #3  |  ...            |  May 11, 2003   |  [AUDIO PLAYER]   |  [DO
 
 ### 2. Push your application into any of Git service you like.
 ### 3. Deploy your application to Heroku or any server that you have
-### 4. Send the Git URL and the running product back to hr@8bitrockr.com
