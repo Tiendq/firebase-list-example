@@ -67,7 +67,7 @@ class SearchMediaForm extends React.Component {
         <td>{item.title}</td>
         <td>{item.description}</td>
         <td>{new Date(item.createdDate).toDateString()}</td>
-        <td><MediaPreview mediaType={item.mediaType} url={item.url} /></td>
+        <td>{item.url && <MediaPreview mediaType={item.mediaType} url={item.url} />}</td>
         <td>
           <button type="button" className="btn btn-success" data-index={index} onClick={this.handleClickAddItem}>Add</button>
         </td>
@@ -81,6 +81,8 @@ class SearchMediaForm extends React.Component {
       this.setState({ searching: true });
 
       let items = await searchMediaByKeyword(this.state.keyword);
+
+      // console.log(items);
 
       this.setState({ searching: false });
 

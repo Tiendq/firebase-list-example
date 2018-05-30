@@ -8,26 +8,33 @@ async function searchMediaByKeyword(keyword) {
   let foundItems = result.collection.items;
   let max = foundItems.length > 10 ? 10 : foundItems.length;
 
-  let mediaItems = [];
+  if (max) {
+    let items = foundItems.slice(0, max);
+    let promises = items.map(async (item) => {
+      let response = await fetch(item.href);
+      return 200 === response.status ? response.json() : Promise.resolve([]);
+    });
 
-  for (let i = 0; i < max; ++ i) {
-    let item = foundItems[i].data[0];
-    let mediaFiles = await retrieveMediaFileUrl(foundItems[i].href);
+    let mediaItems = [];
 
-    // console.log(foundItems[i].data[0]);
+    for (let i = 0; i < promises.length; ++ i) {
+      let mediaFiles = await promises[i];
 
-    if (mediaFiles) {
+      // console.log(items[index].data[0]);
+
       mediaItems.push({
-        title: item.title,
-        description: item.description,
-        createdDate: item.date_created,
-        mediaType: item.media_type,
-        url: mediaFiles[0]
+        title: items[i].data[0].title,
+        description: items[i].data[0].description,
+        createdDate: items[i].data[0].date_created,
+        mediaType: items[i].data[0].media_type,
+        url: mediaFiles.length ? mediaFiles[0] : ''
       });
     }
+
+    return mediaItems;
   }
 
-  return mediaItems;
+  return [];
 }
 
 async function search(keyword) {
@@ -47,6 +54,7 @@ async function search(keyword) {
     });
 }
 
+/*
 async function retrieveMediaFileUrl(url) {
   return fetch(url)
     .then(response => {
@@ -64,6 +72,7 @@ async function retrieveMediaFileUrl(url) {
       return null;
     });
 }
+*/
 
 export {
   searchMediaByKeyword
