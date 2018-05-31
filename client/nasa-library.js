@@ -48,8 +48,7 @@ async function search(keyword) {
     .then(result => {
       return result.success ? result.data : null;
     })
-    .catch(error => {
-      console.error(error);
+    .catch(() => {
       return null;
     });
 }
