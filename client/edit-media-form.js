@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uploadFile } from './firebase-storage';
+import App from './app';
 import MediaPreview from './media-preview';
+import { uploadFile } from './firebase-storage';
 import './edit-media-form.scss';
 
 class EditMediaForm extends React.Component {
@@ -25,11 +26,11 @@ class EditMediaForm extends React.Component {
     let formClass = this.state.error ? "col-12 was-validated" : "col-12";
 
     return (
-      <div className="row edit-media-form">
+      <App className="edit-media-form">
         <form onSubmit={this.handleClickSubmit} className={formClass} noValidate>
           <div className="form-group form-actions">
             <button type="submit" className="btn btn-success">Save</button>
-            <button type="button" className="btn btn-success" onClick={this.props.onCancel}>Cancel</button>
+            <button type="button" className="btn btn-success" onClick={this.handleClickCancel}>Cancel</button>
             {this.props.item && <button type="button" className="btn btn-danger" onClick={this.handleClickDelete}>Delete</button>}
           </div>
           <div className="form-group row">
@@ -63,7 +64,7 @@ class EditMediaForm extends React.Component {
             </div>
           </div>}
         </form>
-      </div>
+      </App>
     );
   }
   handleClickSubmit = async (event) => {
@@ -108,6 +109,8 @@ class EditMediaForm extends React.Component {
         });
       }
     }
+
+    location.href = '/';
   }
   handleTitleChange = (event) => {
     this.setState({ title: event.target.value });
@@ -116,15 +119,19 @@ class EditMediaForm extends React.Component {
     this.setState({ description: event.target.value });
   }
   handleClickDelete = () => {
-    if (this.props.item && window.confirm("Are you sure?"))
+    if (this.props.item && window.confirm("Are you sure?")) {
       this.props.onDelete(this.props.item.id);
+      location.href = '/';
+    }
+  }
+  handleClickCancel = (event) => {
+    location.href = '/';
   }
 }
 
 EditMediaForm.propTypes = {
   item: PropTypes.object,
   onSave: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 }
 

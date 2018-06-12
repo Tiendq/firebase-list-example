@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { listMedia, addNasaMedia } from './actions';
+import { addNasaMedia } from './actions';
 import SearchMediaForm from './search-media-form';
 
 let mapDispatchToProps = (dispatch) => ({
-  onCancel: () => dispatch(listMedia()),
   onAddItem: (item) => {
     // console.log(item);
     dispatch(addNasaMedia(item));

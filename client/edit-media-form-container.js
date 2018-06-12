@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
-import { listMedia, addMedia, deleteMedia, updateMedia } from './actions';
+import { addMedia, deleteMedia, updateMedia } from './actions';
 import EditMediaForm from './edit-media-form';
 
-const mapStateToProps = (state) => ({
-  item: state.editingIndex >= 0 ? state.items[state.editingIndex] : null
+const mapStateToProps = (state, ownProps) => ({
+  item: ownProps.match.params.index ? state.items[ownProps.match.params.index] : null
 });
 
 let mapDispatchToProps = (dispatch) => ({
-  onCancel: () => dispatch(listMedia()),
   onSave: (item) => dispatch(item.id ? updateMedia(item) : addMedia(item)),
   onDelete: (id) => dispatch(deleteMedia(id))
 });

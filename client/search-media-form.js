@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { searchMediaByKeyword } from './nasa-library';
+import App from './app';
 import MediaPreview from './media-preview';
+import { searchMediaByKeyword } from './nasa-library';
 import './search-media-form.scss';
 
 class SearchMediaForm extends React.Component {
@@ -17,7 +18,7 @@ class SearchMediaForm extends React.Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <App>
         <div className="row search-media-form">
           <form onSubmit={this.handleClickSubmit} className="col-12 search-form" noValidate>
             <div className="form-row">
@@ -26,7 +27,7 @@ class SearchMediaForm extends React.Component {
               </div>
               <div className="col-4">
                 <button type="submit" className="btn btn-success">Search</button>
-                <button type="button" className="btn btn-success" onClick={this.props.onCancel}>Cancel</button>
+                <button type="button" className="btn btn-success" onClick={this.handleClickCancel}>Cancel</button>
                 {this.renderSearchStatus()}
               </div>
             </div>
@@ -50,7 +51,7 @@ class SearchMediaForm extends React.Component {
             </table>
           </div>
         </div>
-      </React.Fragment>
+      </App>
     );
   }
   renderSearchStatus = () => {
@@ -101,11 +102,14 @@ class SearchMediaForm extends React.Component {
   handleClickAddItem = (event) => {
     event.preventDefault();
     this.props.onAddItem(this.state.items[Number(event.target.dataset.index)]);
+    location.href = '/';
+  }
+  handleClickCancel = (event) => {
+    location.href = '/';
   }
 }
 
 SearchMediaForm.propTypes = {
-  onCancel: PropTypes.func.isRequired,
   onAddItem: PropTypes.func.isRequired
 }
 

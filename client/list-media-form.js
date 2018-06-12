@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import App from './app';
 import MediaPreview from './media-preview';
 import './list-media-form.scss';
 
 class ListMediaForm extends React.Component {
   render() {
-    let { items, onAddItem, onAddItemFromNASA } = this.props;
-
     return (
-      <React.Fragment>
+      <App>
         <div className="row list-media-form">
           <div className="col-12 form-actions">
-            <button type="button" className="btn btn-success btn-add-item" onClick={onAddItem}>Add</button>
-            <button type="button" className="btn btn-success" onClick={onAddItemFromNASA}>Add from NASA</button>
+            <button type="button" className="btn btn-success btn-add-item" onClick={this.handleAddItemClick}>Add</button>
+            <button type="button" className="btn btn-success" onClick={this.handleAddItemFromNASAClick}>Add from NASA</button>
           </div>
         </div>
         <div className="row list-media-form">
@@ -28,19 +27,19 @@ class ListMediaForm extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, index) => this.renderListItem(item, index))}
+                {this.props.items.map((item, index) => this.renderListItem(item, index))}
               </tbody>
             </table>
           </div>
         </div>
-      </React.Fragment>
+      </App>
     );
   }
   renderListItem = (item, index) => {
     return (
       <tr key={item.title.substr(0, 30)}>
         <td>
-          <a href="#" onClick={this.handleTitleClick} data-index={index}>{item.title}</a>
+          <a href={`/edit/${index}`}>{item.title}</a>
         </td>
         <td>{item.description}</td>
         <td>{new Date(item.createdDate).toDateString()}</td>
@@ -49,17 +48,18 @@ class ListMediaForm extends React.Component {
       </tr>
     );
   }
-  handleTitleClick = (event) => {
+  handleAddItemClick = (event) => {
     event.preventDefault();
-    this.props.onEditItem(Number(event.target.dataset.index));
+    location.href = '/create';
+  }
+  handleAddItemFromNASAClick = (event) => {
+    event.preventDefault();
+    location.href = '/search';
   }
 }
 
 ListMediaForm.propTypes = {
-  items: PropTypes.array.isRequired,
-  onAddItem: PropTypes.func.isRequired,
-  onAddItemFromNASA: PropTypes.func.isRequired,
-  onEditItem: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 export default ListMediaForm;

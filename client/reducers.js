@@ -1,44 +1,5 @@
 import cuid from 'cuid';
-import { ADD_FROM_NASA, ADD_MEDIA, DELETE_MEDIA, EDIT_MEDIA, LIST_MEDIA, SEARCH_MEDIA, UPDATE_MEDIA } from './actions';
-import { TaskList } from './constants';
-
-export const editingIndex = (state = -1, action) => {
-  switch (action.type) {
-    case EDIT_MEDIA:
-      return action.index;
-
-    default:
-      return state;
-  }
-}
-
-export const task = (state = TaskList.LIST, action) => {
-  switch (action.type) {
-    case ADD_FROM_NASA:
-      return TaskList.LIST;
-
-    case ADD_MEDIA:
-      return TaskList.LIST;
-
-    case UPDATE_MEDIA:
-      return TaskList.LIST;
-
-    case DELETE_MEDIA:
-      return TaskList.LIST;
-
-    case EDIT_MEDIA:
-      return TaskList.EDIT;
-
-    case LIST_MEDIA:
-      return TaskList.LIST;
-
-    case SEARCH_MEDIA:
-      return TaskList.SEARCH;
-
-    default:
-      return state;
-  }
-}
+import { ADD_FROM_NASA, ADD_MEDIA, DELETE_MEDIA, UPDATE_MEDIA } from './actions';
 
 export const items = (state = [], action) => {
   switch (action.type) {
