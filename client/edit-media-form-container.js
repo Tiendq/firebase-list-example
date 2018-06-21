@@ -1,16 +1,17 @@
-import { connect } from 'react-redux';
+import { connectAdvanced } from 'react-redux';
 import { addMedia, deleteMedia, updateMedia } from './actions';
 import EditMediaForm from './edit-media-form';
 
-const mapStateToProps = (state, ownProps) => ({
-  item: ownProps.match.params.index ? state.items[ownProps.match.params.index] : null
-});
+// connectAdvanced(selectorFactory, [connectOptions])
+// https://github.com/reduxjs/react-redux/blob/master/docs/api.md#connectadvancedselectorfactory-connectoptions
+let EditMediaFormContainer = connectAdvanced(selectorFactory)(EditMediaForm);
 
-let mapDispatchToProps = (dispatch) => ({
-  onSave: (item) => dispatch(item.id ? updateMedia(item) : addMedia(item)),
-  onDelete: (id) => dispatch(deleteMedia(id))
-});
-
-let EditMediaFormContainer = connect(mapStateToProps, mapDispatchToProps)(EditMediaForm);
+function selectorFactory(dispatch) {
+  return (nextState, nextOwnProps) => ({
+    item: nextOwnProps.match.params.index ? nextState.items[nextOwnProps.match.params.index] : null,
+    onSave: (item) => dispatch(item.id ? updateMedia(item) : addMedia(item)),
+    onDelete: (id) => dispatch(deleteMedia(id))
+  });
+}
 
 export default EditMediaFormContainer;

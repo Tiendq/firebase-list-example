@@ -13,7 +13,7 @@ function Root({ store }) {
         <Switch>
           <Route exact path="/" component={ListMediaFormContainer} />
           <Route path="/create" component={EditMediaFormContainer} />
-          <Route path="/edit/:index" component={EditMediaFormContainer} />
+          <Route path="/edit/:index?" component={EditMediaFormContainer} />
           <Route path="/search" component={SearchMediaFormContainer} />
         </Switch>
       </Router>
